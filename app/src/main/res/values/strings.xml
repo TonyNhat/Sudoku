@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sudoku</string>
+    <string name="new_game_title">DIFFICULTY</string>
+    <string name="easy_lable">Easy</string>
+    <string name="medium_lable">Medium</string>
+    <string name="hard_lable">Hard</string>
+</resources>
