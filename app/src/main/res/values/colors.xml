@@ -5,4 +5,15 @@
     <color name="colorAccent">#FF4081</color>
     <color name="maubala">#f1b5f1</color>
     <color name="white">#fff</color>
+    <color name="background">#ffe6f0ff</color>
+    <color name="puzzle_dark">#64fa0808</color>
+    <color name="puzzle_hilite">#ff0c0c</color>
+    <color name="puzzle_light">#64c6d4ef</color>
+    <color name="forceground">#2fbf0e</color>
+    <color name="hint0">#64ff0000</color>
+    <color name="hint1">#64d911cb</color>
+    <color name="hint2">#20f70411</color>
+    <color name="selected">#64f70bdf</color>
+
 </resources>
+

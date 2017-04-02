@@ -27,7 +27,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnHuongDan.setOnClickListener(this);
         btnThoat = (Button) findViewById(R.id.btn_thoat);
         btnThoat.setOnClickListener(this);
-
     }
 
     public void onClick(View v) {
@@ -44,7 +43,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
         }
     }
-    public void openNewGameDialog(){
+
+    public void openNewGameDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.new_game_title).setItems(R.array.difficulty, new DialogInterface.OnClickListener() {
             @Override
@@ -54,7 +54,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         });
         builder.create().show();
     }
-    private void  startGame (int i){
 
+    private void startGame(int i) {
+        Intent intent = new Intent(MainActivity.this, Game.class);
+        intent.putExtra(Game.KEY_DIFFICULTY, i);
+        startActivity(intent);
     }
 }

@@ -7,34 +7,28 @@
         android:src="@drawable/imagess"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
     <Button
-
         android:textSize="25sp"
         android:id="@+id/btn_batdau"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Bắt Đầu" />
-
     <Button
         android:id="@+id/btn_tieptuc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tiếp Tục"
         android:textSize="25sp" />
-
     <Button
         android:textSize="25sp"
         android:id="@+id/btn_huongdan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hướng Dẫn" />
-
     <Button
         android:id="@+id/btn_thoat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Thoát"
         android:textSize="25sp" />
-
 </LinearLayout>

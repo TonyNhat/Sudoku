@@ -4,4 +4,7 @@
     <string name="easy_lable">Easy</string>
     <string name="medium_lable">Medium</string>
     <string name="hard_lable">Hard</string>
+    <string name="game_title">Game Sudoku</string>
+    <string name="keypad_title">KeyPad</string>
+    <string name="no_move">No Move</string>
 </resources>
