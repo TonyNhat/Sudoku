@@ -16,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-
         android:textSize="22dp"
         android:text="Bàn cờ Sudoku có dạng 9x9 với 9 hàng, 9 cột và 9 vùng, mỗi vùng có 3x3 ô vuông. Có một vài ô được đánh số, đó chính là manh mối giúp bạn tìm ra lời giải. Nhiệm vụ của bạn là phải điền kín những ô còn lại với điều kiện:\n \t\n  Không trùng số nào ở hàng ngang.\t\n  Không trùng số nào ở hàng dọc.\t\n \tKhông trùng số nào trong vùng 3x3." />
 

@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp">
     <ImageView
-        android:src="@drawable/imagess"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:src="@drawable/imagess" />
     <Button
-        android:textSize="25sp"
+        android:layout_marginTop="50dp"
         android:id="@+id/btn_batdau"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bắt Đầu" />
+        android:text="Bắt Đầu"
+        android:textSize="25sp" />
     <Button
         android:id="@+id/btn_tieptuc"
         android:layout_width="match_parent"
@@ -20,15 +24,16 @@
         android:text="Tiếp Tục"
         android:textSize="25sp" />
     <Button
-        android:textSize="25sp"
         android:id="@+id/btn_huongdan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hướng Dẫn" />
+        android:text="Hướng Dẫn"
+        android:textSize="25sp" />
     <Button
         android:id="@+id/btn_thoat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Thoát"
         android:textSize="25sp" />
+
 </LinearLayout>

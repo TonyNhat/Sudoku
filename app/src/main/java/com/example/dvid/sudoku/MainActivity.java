@@ -18,7 +18,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+        //sự kiện click cho các Button
         btnBatDau = (Button) findViewById(R.id.btn_batdau);
         btnBatDau.setOnClickListener(this);
         btnTiepTuc = (Button) findViewById(R.id.btn_tieptuc);
@@ -54,10 +54,30 @@ public class MainActivity extends Activity implements View.OnClickListener {
         });
         builder.create().show();
     }
-
+    //phương thức khởi động game
     private void startGame(int i) {
         Intent intent = new Intent(MainActivity.this, Game.class);
         intent.putExtra(Game.KEY_DIFFICULTY, i);
         startActivity(intent);
     }
+    /*
+
+        public boolean onCreateOptionsMenu(Menu menu) {
+            super.onCreateOptionsMenu(menu);
+            MenuInflater inflater = this.getMenuInflater();
+            inflater.inflate(2131296256, menu);
+            return true;
+        }
+
+        public boolean onOptionsItemSelected(MenuItem item) {
+            switch(item.getItemId()) {
+            case 2131361808:
+                this.startActivity(new Intent(this, Prefs.class));
+                return true;
+            default:
+                return false;
+            }
+        }
+
+     */
 }

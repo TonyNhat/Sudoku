@@ -51,13 +51,12 @@ public class PuzzleView extends View {
         Paint background = new Paint();
         background.setColor(getResources().getColor(R.color.background));
         canvas.drawRect(0, 0, getWidth(), getHeight(), background);
-        //Tô màu cho mấy đường kẻ
         Paint dark = new Paint();
         dark.setColor(getResources().getColor(R.color.puzzle_dark));
         Paint hilite = new Paint();
-        dark.setColor(getResources().getColor(R.color.puzzle_hilite));
+        hilite.setColor(getResources().getColor(R.color.puzzle_hilite));
         Paint light = new Paint();
-        dark.setColor(getResources().getColor(R.color.puzzle_light));
+        light.setColor(getResources().getColor(R.color.puzzle_light));
         //Tiếp tục kẻ bảng (kẻ mấy đường PHỤ)
         for (int i = 0; i < 9; i++) {
             canvas.drawLine(0, i * height, getWidth(), i * height, light);
