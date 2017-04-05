@@ -7,4 +7,5 @@
     <string name="game_title">Game Sudoku</string>
     <string name="keypad_title">KeyPad</string>
     <string name="no_move">No Move</string>
+    <string name="kiem_tra_lai">Trùng số</string>
 </resources>

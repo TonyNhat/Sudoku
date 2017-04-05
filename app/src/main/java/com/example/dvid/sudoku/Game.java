@@ -17,8 +17,12 @@ public class Game extends Activity {
     public static final int DIFFICULTY_EASY = 0;
     public static final int DIFFICULTY_MEDIUM = 1;
     public static final int DIFFICULTY_HARD = 2;
+    private static final String PREF_PUZZLE ="puzzle";
+    protected static final int DIFFICULTY_CONTINUE= -1;
+
     private int puzzle[];
     private PuzzleView puzzleView;
+    //private final int used [][][] = new int [9][9][];
     //Mặc định số vào trong game
     private final String easyPuzzle =
             "360000000004230800000004200" +
@@ -41,6 +45,8 @@ public class Game extends Activity {
         puzzleView = new PuzzleView(this);
         setContentView(puzzleView);
         puzzleView.requestFocus();
+        //nếu game bị khởi động lại, tiếp tục chơi màn game cuối cùng
+        getIntent().putExtra(KEY_DIFFICULTY,DIFFICULTY_CONTINUE);
     }
     boolean setTileIfVaild(int x, int y, int value) {
         int tiles[] = getUsedTiles(x, y);
@@ -58,9 +64,6 @@ public class Game extends Activity {
 
     private final int used[][][] = new int[9][9][];
 
-    protected int[] getUsedTiles(int x, int y) {
-        return used[x][y];
-    }
     //kiểm tra tính đúng sai của con số người chơi nhập vào.
     private void calculateUsedTiles() {
         for (int x = 0; x < 9; x++) {
@@ -72,6 +75,7 @@ public class Game extends Activity {
     //Loại bỏ số 0 trong game
     private int[] calculateUsedTiles(int x, int y) {
         int c[] = new int[9];
+        //vertical
         for (int i = 0; i < 9; i++) {
             if (i == y) {
                 continue;
@@ -81,6 +85,7 @@ public class Game extends Activity {
                 c[t - 1] = t;
             }
         }
+        //horizontal
         for (int i = 0; i < 9; i++) {
             if (i == x) {
                 continue;
@@ -90,6 +95,7 @@ public class Game extends Activity {
                 c[t - 1] = t;
             }
         }
+        //same cell block
         int startx = (x / 3) * 3;
         int starty = (y / 3) * 3;
         for (int i = startx; i < startx + 3; i++) {
@@ -103,6 +109,7 @@ public class Game extends Activity {
                 }
             }
         }
+        //compress
         int nused = 0;
         for (int t : c) {
             if (t != 0) {
@@ -121,6 +128,9 @@ public class Game extends Activity {
     private int[] getPuzzle(int diff) {
         String puz;
         switch (diff) {
+            case DIFFICULTY_CONTINUE:
+                puz = getPreferences(MODE_PRIVATE).getString(PREF_PUZZLE,easyPuzzle);
+                break;
             case DIFFICULTY_HARD:
                 puz = hardPuzzle;
                 break;
@@ -135,6 +145,15 @@ public class Game extends Activity {
         return fromPuzzleString(puz);
     }
     //chuyển từ chuỗi String sang mảng Title
+
+    static private String toPuzzleString(int[] puz) {
+        StringBuilder buf = new StringBuilder();
+        for (int element : puz) {
+            buf.append(element);
+        }
+        return buf.toString();
+    }
+
     static protected int[] fromPuzzleString(String string) {
         int[] puz = new int[string.length()];
         for (int i = 0; i < puz.length; i++) {
@@ -154,6 +173,9 @@ public class Game extends Activity {
             dialog.show();
         }
     }
+    protected int[] getUsedTiles(int x, int y) {
+        return used[x][y];
+    }
     //mảng 1 chiều để lưu các title
     private int getTile(int x, int y) {
         return puzzle[y * 9 + x];
@@ -170,5 +192,20 @@ public class Game extends Activity {
         } else {
             return String.valueOf(v);
         }
+    }
+    /*
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Music.play(this, R.raw.game);
+    }
+ */
+    @Override
+    protected void onPause() {
+        super.onPause();
+      //  Music.stop(this);
+        // Save the current puzzle
+        getPreferences(MODE_PRIVATE).edit()
+                .putString(PREF_PUZZLE, toPuzzleString(puzzle)).commit();
     }
 }

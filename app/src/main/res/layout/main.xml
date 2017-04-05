@@ -1,39 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/man_hinh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_gravity="center"
     android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp">
+    android:layout_marginRight="16dp"
+    android:orientation="vertical">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:src="@drawable/imagess" />
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <Button
-        android:layout_marginTop="50dp"
         android:id="@+id/btn_batdau"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Bắt Đầu"
         android:textSize="25sp" />
+
     <Button
         android:id="@+id/btn_tieptuc"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Tiếp Tục"
         android:textSize="25sp" />
+
     <Button
         android:id="@+id/btn_huongdan"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Hướng Dẫn"
         android:textSize="25sp" />
+
     <Button
         android:id="@+id/btn_thoat"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Thoát"
         android:textSize="25sp" />
+    </LinearLayout>
 
 </LinearLayout>

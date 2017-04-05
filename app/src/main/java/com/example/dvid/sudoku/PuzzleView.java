@@ -5,11 +5,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 
 /**
@@ -51,20 +53,21 @@ public class PuzzleView extends View {
         Paint background = new Paint();
         background.setColor(getResources().getColor(R.color.background));
         canvas.drawRect(0, 0, getWidth(), getHeight(), background);
+        //Xác định màu cho mấy đường kẻ PHỤ
         Paint dark = new Paint();
         dark.setColor(getResources().getColor(R.color.puzzle_dark));
         Paint hilite = new Paint();
         hilite.setColor(getResources().getColor(R.color.puzzle_hilite));
         Paint light = new Paint();
         light.setColor(getResources().getColor(R.color.puzzle_light));
-        //Tiếp tục kẻ bảng (kẻ mấy đường PHỤ)
+        //Kẻ bảng (kẻ mấy đường PHỤ)
         for (int i = 0; i < 9; i++) {
             canvas.drawLine(0, i * height, getWidth(), i * height, light);
             canvas.drawLine(0, i * height + 1, getWidth(), i * height + 1, hilite);
             canvas.drawLine(i * width, 0, i * width, getHeight(), light);
             canvas.drawLine(i * width + 1, 0, i * width + 1, getHeight(), hilite);
         }
-        //Tiếp tục kẻ bảng (kẻ mấy đường CHÍNH)
+        //Kẻ bảng (kẻ mấy đường CHÍNH)
         for (int i = 0; i < 9; i++) {
             if (i % 3 != 0) {
                 continue;
@@ -75,6 +78,7 @@ public class PuzzleView extends View {
             canvas.drawLine(i * width + 1, 0, i * width + 1, getHeight(), hilite);
         }
         //Đưa Numbers vào
+        //Tô màu cho Numbers
         Paint foreground = new Paint(Paint.ANTI_ALIAS_FLAG);
         foreground.setColor(getResources().getColor(R.color.forceground));
         foreground.setStyle(Paint.Style.FILL);
@@ -93,6 +97,26 @@ public class PuzzleView extends View {
                         i * width + x, j * height + y, foreground);
             }
         }
+
+       /* if (Prefs.getHints(getContext())) {
+            // Draw the hints...
+            // Pick a hint color based on #moves left
+            Paint hint = new Paint();
+            int c[] = { getResources().getColor(R.color.puzzle_hint_0),
+                    getResources().getColor(R.color.puzzle_hint_1),
+                    getResources().getColor(R.color.puzzle_hint_2), };
+            Rect r = new Rect();
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    int movesleft = 9 - game.getUsedTiles(i, j).length;
+                    if (movesleft < c.length) {
+                        getRect(i, j, r);
+                        hint.setColor(c[movesleft]);
+                        canvas.drawRect(r, hint);
+                    }
+                }
+            }
+        }*/
         //Draw the selection-->Tô màu ô người chơi trỏ tới
         Paint selected = new Paint();
         selected.setColor(getResources().getColor(R.color.selected));
@@ -159,6 +183,12 @@ public class PuzzleView extends View {
         if(game.setTileIfVaild(selX,selY,title)){
             invalidate();
         }
+        else {
+            startAnimation(AnimationUtils.loadAnimation(game,R.anim.a));
+            //Toast toast = Toast.makeText(this, R.string.kiem_tra_lai, Toast.LENGTH_SHORT);
+          //  toast.setGravity(Gravity.CENTER, 0, 0);
+            //toast.show();
+        }
     }
     public void select (int x,int y){
         invalidate(selRect);
@@ -177,6 +207,26 @@ public class PuzzleView extends View {
         game.showKeypadOrError(selX,selY);
         return true;
     }
+    /*
+    @Override
+	protected void onRestoreInstanceState(Parcelable state) {
+		Log.d(TAG, "onRestoreInstanceState");
+		Bundle bundle = (Bundle) state;
+		select(bundle.getInt(SELX), bundle.getInt(SELY));
+		super.onRestoreInstanceState(bundle.getParcelable(VIEW_STATE));
+	}
+
+	@Override
+	protected Parcelable onSaveInstanceState() {
+		Parcelable p = super.onSaveInstanceState();
+		Log.d(TAG, "onSaveInstanceState");
+		Bundle bundle = new Bundle();
+		bundle.putInt(SELX, selX);
+		bundle.putInt(SELY, selY);
+		bundle.putParcelable(VIEW_STATE, p);
+		return bundle;
+	}
+     */
 
 
 
