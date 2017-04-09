@@ -17,7 +17,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        //sự kiện click cho các Button
+        //lắng nghe sự kiện click cho các Button
         btnBatDau = (Button) findViewById(R.id.btn_batdau);
         btnBatDau.setOnClickListener(this);
         btnTiepTuc = (Button) findViewById(R.id.btn_tieptuc);
@@ -26,15 +26,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnHuongDan.setOnClickListener(this);
         btnThoat = (Button) findViewById(R.id.btn_thoat);
         btnThoat.setOnClickListener(this);
-
+        //làm background
         manHinh = (LinearLayout) findViewById(R.id.man_hinh);
         manHinh.setBackgroundResource(R.drawable.nen);
     }
-
-
+    //các chức năng khi "click" vào các button
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_huongdan:
+                //click vào nút này nó sẽ gọi layout "HuongDan.xml" ra
                 Intent i = new Intent(this, HuongDan.class);
                 startActivity(i);
                 break;
@@ -49,25 +49,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
         }
     }
-     /*@Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            super.onCreateOptionsMenu(menu);
-            MenuInflater inflater = this.getMenuInflater();
-            inflater.inflate(2131296256, menu);
-            return true;
-        }
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            switch(item.getItemId()) {
-            case R.id.settings:
-                startActivity(new Intent(this, Prefs.class));
-                return true;
-            default:
-                return false;
-            }
-        }
-     */
-    public void openNewGameDialog() {
+     //Tui tạo 1 cái array "Chọn Cấp độ" chứa 3 cấp độ.
+     public void openNewGameDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.new_game_title)
                 .setItems(R.array.difficulty, new DialogInterface.OnClickListener() {
@@ -84,20 +67,4 @@ public class MainActivity extends Activity implements View.OnClickListener {
         intent.putExtra(Game.KEY_DIFFICULTY, i);
         startActivity(intent);
     }
-
-    /*
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Music.play(this,R.raw.main)
-    }
-     @Override
-    protected void onResume() {
-        super.onResume();
-        Music.play(this,R.raw.main)
-        }
-    }
-
-*/
-
 }

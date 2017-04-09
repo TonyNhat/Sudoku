@@ -22,7 +22,7 @@ public class Game extends Activity {
 
     private int puzzle[];
     private PuzzleView puzzleView;
-    //private final int used [][][] = new int [9][9][];
+
     //Mặc định số vào trong game
     private final String easyPuzzle =
             "360000000004230800000004200" +
@@ -161,7 +161,7 @@ public class Game extends Activity {
         }
         return puz;
     }
-    //báo người chơi đánh sai số
+    //báo người chơi có sai số
     void showKeypadOrError(int x, int y) {
         int tiles[] = getUsedTiles(x, y);
         if (tiles.length == 9) {
@@ -193,18 +193,9 @@ public class Game extends Activity {
             return String.valueOf(v);
         }
     }
-    /*
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Music.play(this, R.raw.game);
-    }
- */
     @Override
     protected void onPause() {
         super.onPause();
-      //  Music.stop(this);
-        // Save the current puzzle
         getPreferences(MODE_PRIVATE).edit()
                 .putString(PREF_PUZZLE, toPuzzleString(puzzle)).commit();
     }

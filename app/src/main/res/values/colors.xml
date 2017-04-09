@@ -10,7 +10,7 @@
     <color name="puzzle_hilite">#ffffff</color>
     <color name="puzzle_light">#64c6d4</color>
     <color name="forceground">#2fbf0e</color>
-    <color name="hint0">#64ff00</color>
+    <color name="hint0">#00ffe5</color>
     <color name="hint1">#6400ff</color>
     <color name="hint2">#2000ff</color>
     <color name="selected">#64f70bdf</color>
