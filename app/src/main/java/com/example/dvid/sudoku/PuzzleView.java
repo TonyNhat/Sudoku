@@ -77,7 +77,7 @@ public class PuzzleView extends View {
             canvas.drawLine(i * width, 0, i * width, getHeight(), dark);
             canvas.drawLine(i * width + 1, 0, i * width + 1, getHeight(), hilite);
         }
-        //Đưa Numbers vào
+
         //Tô màu cho Numbers đưa vào
         Paint foreground = new Paint(Paint.ANTI_ALIAS_FLAG);
         foreground.setColor(getResources().getColor(R.color.forceground));
@@ -85,7 +85,7 @@ public class PuzzleView extends View {
         foreground.setTextSize(height * 0.75f);
         foreground.setTextScaleX(width / height);
         foreground.setTextAlign(Paint.Align.CENTER);
-        //Draw the number in the center of the tiles
+        //Draw the number in the center of the tiles--> cho số vào chính giữa mỗi ô
         Paint.FontMetrics fm = foreground.getFontMetrics();
         //Centering in X:use alignment (and X at midpoint)
         float x = width / 2;
